@@ -70,33 +70,7 @@ curl -s --get 'http://127.0.0.1:8000/ask'   --data-urlencode 'q=Is Disneyland Ca
 curl -s http://127.0.0.1:8000/metrics | head
 
 🧠 Architecture 
-```mermaid
-flowchart LR
-
-%% === Client Layer ===
-subgraph Client
-    U[Analyst UI / cURL] -->|HTTP JSON| API
-end
-
-%% === Service Layer ===
-subgraph Service
-    API[FastAPI NLQ API] --> MW["Logging & Metrics<br>Middleware"]
-    MW --> QP["Query Parser<br>(country / park / time filters)"]
-    QP --> RAG["Retriever<br>(TF-IDF + metadata)"]
-    RAG -->|"top-k docs + metadata"| LLM["LLMClient<br>(4o-mini or Heuristic)"]
-    RAG -->|telemetry| MON[Prometheus Exporter]
-    MW --> MON
-end
-
-%% === Data Plane ===
-subgraph DataPlane[Data Plane]
-    DF[(Reviews CSV)] --> ETL[Loader + Preprocess]
-    ETL --> IDX["Vector Index<br>(TF-IDF + metadata frame)"]
-    IDX --> RAG
-end
-
-%% === Monitoring / Dashboard ===
-MON --> GRAF["Dashboard<br>(Prometheus / Grafana)"]
+```npx @mermaid-js/mermaid-cli -i architecture.mmd -o docs/architecture.svg
 
 ```
 🔍 Components
