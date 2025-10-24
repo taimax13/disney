@@ -69,10 +69,8 @@ curl -s --get 'http://127.0.0.1:8000/ask'   --data-urlencode 'q=Is Disneyland Ca
 6. Metrics
 curl -s http://127.0.0.1:8000/metrics | head
 
-🧠 Architecture
-```markdown
-![Architecture Diagram](docs/architecture.svg)
-```
+## 🧠 Architecture
+![Architecture Diagram](https://raw.githubusercontent.com/taimax13/disney/master/docs/architecture.svg)
 
 🔍 Components
 Component	Description
