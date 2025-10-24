@@ -70,8 +70,7 @@ curl -s --get 'http://127.0.0.1:8000/ask'   --data-urlencode 'q=Is Disneyland Ca
 curl -s http://127.0.0.1:8000/metrics | head
 
 🧠 Architecture 
-```marmaid
-flowchart LR
+```flowchart LR
 
 %% === Client Layer ===
 subgraph Client
