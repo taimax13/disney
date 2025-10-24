@@ -70,9 +70,8 @@ curl -s --get 'http://127.0.0.1:8000/ask'   --data-urlencode 'q=Is Disneyland Ca
 curl -s http://127.0.0.1:8000/metrics | head
 
 🧠 Architecture 
-```npx @mermaid-js/mermaid-cli -i architecture.mmd -o docs/architecture.svg
+![Architecture Diagram](docs/architecture.svg)
 
-```
 🔍 Components
 Component	Description
 FastAPI	Exposes /ask, /healthz, and /metrics endpoints.
