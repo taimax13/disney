@@ -1,0 +1,4 @@
+/data
+/data/*
+prototype/testes/__pycache__/
+prototype/testes/__pycache__/*
