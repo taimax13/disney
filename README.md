@@ -1,0 +1,44 @@
+
+# Disney Reviews NLQ Prototype
+
+
+## Dataset
+Use the Kaggle dataset: https://www.kaggle.com/datasets/arushchillar/disneyland-reviews
+Place the CSV as `data/disneyland_reviews.csv`.
+
+
+## Run
+see Quickstart in main doc. Example queries:
+- "What do visitors from Australia say about Disneyland in Hong Kong?"
+- "Is spring a good time to visit Disneyland?"
+- "Is Disneyland California usually crowded in June?"
+- "Is the staff in Paris friendly?"
+
+```mermaid
+flowchart LR
+subgraph Client
+U[Analyst UI / cURL] -->|HTTP /json| API
+end
+
+
+subgraph Service
+API[FastAPI NLQ API] --> MW[Logging & Metrics Middleware]
+MW --> QP[Query Parser\n(country/park/time filters)]
+QP --> RAG[Retriever]
+RAG -->|top‑k docs + metadata| LLM[4o‑mini LLM\n(answer synthesis)]
+RAG -->|telemetry| MON[Prometheus Exporter]
+MW --> MON
+end
+
+
+subgraph Data Plane
+DF[(Reviews CSV)] --> ETL[Loader + Preprocess]
+ETL --> IDX[Vector Index (TF‑IDF)\n+ metadata frame]
+IDX --> RAG
+end
+
+
+MON --> GRAF[Dash/Prom/Grafana]
+
+```
+
