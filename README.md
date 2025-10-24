@@ -69,8 +69,8 @@ curl -s --get 'http://127.0.0.1:8000/ask'   --data-urlencode 'q=Is Disneyland Ca
 6. Metrics
 curl -s http://127.0.0.1:8000/metrics | head
 
-🧠 Architecture
-flowchart LR
+🧠 Architecture 
+```flowchart LR
   subgraph Client
     U[Analyst UI / cURL] -->|HTTP /json| API
   end
@@ -95,7 +95,7 @@ flowchart LR
 
   MON --> GRAF[Dashboard
 (Prometheus / Grafana)]
-
+```
 🔍 Components
 Component	Description
 FastAPI	Exposes /ask, /healthz, and /metrics endpoints.
