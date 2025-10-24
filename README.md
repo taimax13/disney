@@ -103,11 +103,6 @@ DataIndex	Loads, normalizes, and vectorizes review data.
 Retriever	Uses TF-IDF + cosine similarity to find top relevant reviews.
 LLMClient	Optional OpenAI 4o-mini call; otherwise uses a deterministic offline summarizer.
 Monitoring	Prometheus metrics + JSON logging for latency, request counts, and errors.
-🧪 Testing
-
-Run the included unit tests:
-
-pytest -q
 
 🛡️ Monitoring Metrics
 

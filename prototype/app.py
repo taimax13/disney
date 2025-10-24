@@ -7,6 +7,9 @@ from .data_prep import DataIndex, SEASON_TO_MONTHS, PARK_ALIASES
 from .monitoring import init_metrics, instrument
 from .rag import NLQEngine
 
+from starlette.responses import Response
+from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
+
 app = FastAPI(title="Disney Reviews NLQ")
 REGISTRY, METRICS = init_metrics()
 
@@ -47,6 +50,5 @@ def ask(q: str = Query(..., min_length=3)):
 
 @app.get("/metrics")
 def metrics():
-    from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
     data = generate_latest(REGISTRY)
-    return JSONResponse(content=data.decode("utf-8"), media_type=CONTENT_TYPE_LATEST)
+    return Response(content=data, media_type=CONTENT_TYPE_LATEST)
