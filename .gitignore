@@ -2,3 +2,6 @@
 /data/*
 prototype/testes/__pycache__/
 prototype/testes/__pycache__/*
+prototype/__pycache__/*
+prototype/__pycache__/
+

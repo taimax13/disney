@@ -8,11 +8,24 @@ Place the CSV as `data/disneyland_reviews.csv`.
 
 
 ## Run
+Health:
+-  curl -s http://127.0.0.1:8000/healthz | jq
+```{
+  "status": "ok",
+  "docs": 4
+}
+```
+
 see Quickstart in main doc. Example queries:
 - "What do visitors from Australia say about Disneyland in Hong Kong?"
 - "Is spring a good time to visit Disneyland?"
 - "Is Disneyland California usually crowded in June?"
 - "Is the staff in Paris friendly?"
+
+f.e:
+```curl -s --get 'http://127.0.0.1:8000/ask' --data-urlencode 'q=Is the staff in Paris friendly?' | jqCC
+```
+
 
 ```mermaid
 flowchart LR
